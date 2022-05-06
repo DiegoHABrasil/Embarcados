@@ -3,26 +3,60 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <meta content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
     <link href="./styles.css" rel="stylesheet">
-    <title>Hello World!</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <title>Data</title>
   </head>
+  <style>
+    .class_title_style
+    {
+      color: orange;
+      text-align: center;
+      border-style: dashed;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: large;
+    }
+    .class_image
+    {
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+
   <body>
-<style>
-  .classe_titulo
-  {
-    color: aqua;
-    text-align: center;
-  }
-
-  
-</style>
-    <h1 class="classe_titulo">Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <center><h1 class="class_title_style">Signal Acquisition System</h1></center>
     <!-- You can also require other files to run in this process -->
+    <script src="acess_test.js"></script>
+    <script src="/html/js/chart.min.js"></script>
+    <script src="/html/js/chart.js"></script>
+    <script>
+      window.onload = () =>
+      {
+        const button = document.getElementById('Bt_Archive');
+        button.onclick = button_click;
+      }
+    </script>
+    <div class="container-fluid">
+      <button class="btn btn-primary classe_botoes" id="Bt_Archive">Create Archive</button>
+      <div class="row">
+        <div class="col-sm-3">
+          <center><button class="btn btn-primary classe_botoes">Aquisição</button></center>
+          <center><button class="btn btn-primary button_class">Salva</button></center>
+          <center><button class="btn btn-primary button_class">Ajuda</button></center>
+        </div>
+        <div class="col-sm-9">
+          <canvas id="plot1" width="400" height="200" style="border:1px solid #000000;"></canvas>
+          <script>
+            window.onload = () =>
+            {
+              const myChart = new Chart(document.getElementById('plot1'),data_grafico_1);
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+    
     <script src="./renderer.js"></script>
   </body>
 </html>
