@@ -2,7 +2,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 
-console.log("Debug test!);
+console.log("Debug test!");
 
 function createWindow () {
   // Create the browser window.
