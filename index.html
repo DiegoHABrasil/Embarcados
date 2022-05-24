@@ -28,31 +28,45 @@
     <center><h1 class="class_title_style">Signal Acquisition System</h1></center>
     <!-- You can also require other files to run in this process -->
     <script src="acess_test.js"></script>
-    <script src="/html/js/chart.min.js"></script>
-    <script src="/html/js/chart.js"></script>
-    <script>
+    <script src="chart.min.js"></script>
+    <script src="chart.js"></script>
+    <script src="aquisicao.js"></script>
+
+    <!-- <script>
       window.onload = () =>
       {
         const button = document.getElementById('Bt_Archive');
-        button.onclick = button_click;
+        button.onclick = button_click();
       }
-    </script>
+    </script> -->
+
     <div class="container-fluid">
-      <button class="btn btn-primary classe_botoes" id="Bt_Archive">Create Archive</button>
+
       <div class="row">
-        <div class="col-sm-3">
-          <center><button class="btn btn-primary classe_botoes">Aquisição</button></center>
-          <center><button class="btn btn-primary button_class">Salva</button></center>
-          <center><button class="btn btn-primary button_class">Ajuda</button></center>
+        <div class="col-sm-12">
+          <button class="btn btn-outline-primary" style="width:300px" id="Bt_Archive">Aquisição Temp.</button>
+          <button onclick="button_click()" style="width:300px" class="btn btn-outline-primary">Aquisição Umid.</button>
+          <button class="btn btn-outline-primary" style="width:300px">Salvar Temp.</button>
+          <button class="btn btn-outline-primary" style="width:300px">Salvar Umid.</button>
         </div>
         <div class="col-sm-9">
           <canvas id="plot1" width="400" height="200" style="border:1px solid #000000;"></canvas>
+
           <script>
             window.onload = () =>
             {
               const myChart = new Chart(document.getElementById('plot1'),data_grafico_1);
+
+              window.grafico = function(x,y)
+              {
+                myChart.data.labels.push(x);
+                myChart.data.datasets[0].data.push(y);
+                myChart.update();
+              }
+            
             }
           </script>
+          
         </div>
       </div>
     </div>
